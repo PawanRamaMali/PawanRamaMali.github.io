@@ -1,0 +1,21 @@
+///
+/// https://github.com/PawanRamaMali
+/// pawanramamali.github.io | @pawanramamali
+/// Free for personal and commercial use under the CCA 3.0 license (pawanramamali.github.io/license)
+///
+
+/* Contact */
+
+	ul.contact {
+		list-style: none;
+		padding: 0;
+
+		> li {
+			padding: 0;
+			margin: 1.5em 0 0 0;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
