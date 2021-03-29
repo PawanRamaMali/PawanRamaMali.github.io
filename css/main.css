@@ -425,7 +425,7 @@ form {
     text-transform: uppercase;
     letter-spacing: 0.3rem;
     color: #ffffff;
-    border-bottom: 1px solid transparent;
+    border-bottom: 2px solid transparent;
     transition: all 0.3s ease-in-out;
     position: relative;
     right: 7.5rem;
@@ -445,10 +445,12 @@ form {
     position: absolute;
     top: 0;
     right: 0;
+    outline: none;
+    border-bottom: 0px transparent;
 }
 
 .home-scroll:hover .home-scroll__text {
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #4d3880;
 }
 
 html.preload .home-content__main {
