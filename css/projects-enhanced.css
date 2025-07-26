@@ -1,0 +1,375 @@
+/* Enhanced Projects Section Styling */
+
+/* Projects Container */
+#projects {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+#projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Projects Header */
+#projects .inner h2 {
+    color: white;
+    font-size: 4.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
+}
+
+#projects .inner p {
+    color: rgba(255,255,255,0.9);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Individual Project Cards */
+#projects section {
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: projectSlideIn 0.8s ease-out forwards;
+    position: relative;
+    z-index: 2;
+}
+
+#projects section:nth-child(even) {
+    animation-delay: 0.1s;
+}
+
+#projects section:nth-child(odd) {
+    animation-delay: 0.2s;
+}
+
+@keyframes projectSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Project Content Cards */
+#projects .content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.1),
+        0 10px 20px rgba(0,0,0,0.05),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+    margin-bottom: 2rem;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+#projects .content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+#projects .content:hover::before {
+    left: 100%;
+}
+
+#projects .content:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 30px 60px rgba(0,0,0,0.15),
+        0 15px 30px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+/* Inner Content Styling */
+#projects .inner {
+    padding: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Icon Header Styling */
+.project-icon-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.project-icon-header::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--icon-color, #4CAF50), transparent);
+    border-radius: 2px;
+}
+
+.project-icon-header .icon {
+    font-size: 4rem !important;
+    margin-right: 1.5rem !important;
+    background: linear-gradient(135deg, var(--icon-color, #4CAF50), var(--icon-color-dark, #45a049));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+    transition: all 0.3s ease;
+}
+
+.project-icon-header:hover .icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.2));
+}
+
+.project-icon-header h2 {
+    margin: 0 !important;
+    font-size: 2.8rem !important;
+    font-weight: 700 !important;
+    color: #2c3e50 !important;
+    line-height: 1.2 !important;
+    text-shadow: none !important;
+}
+
+/* Project Meta Information */
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 12px;
+    border-left: 4px solid var(--icon-color, #4CAF50);
+}
+
+.project-meta strong {
+    color: #495057;
+    font-weight: 600;
+}
+
+/* Project Sections */
+.project-overview,
+.project-achievements,
+.project-tech-stack,
+.project-impact {
+    margin-bottom: 2rem;
+}
+
+.project-overview strong,
+.project-achievements strong,
+.project-tech-stack strong,
+.project-impact strong {
+    display: block;
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.project-overview strong::before,
+.project-achievements strong::before,
+.project-tech-stack strong::before,
+.project-impact strong::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 20px;
+    background: var(--icon-color, #4CAF50);
+    border-radius: 2px;
+}
+
+/* Achievement Lists */
+.project-achievements ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.project-achievements li {
+    position: relative;
+    padding: 0.5rem 0 0.5rem 2rem;
+    color: #495057;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.project-achievements li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--icon-color, #4CAF50);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.project-achievements li:hover {
+    transform: translateX(5px);
+    color: #2c3e50;
+}
+
+.project-achievements li:hover::before {
+    transform: scale(1.2);
+}
+
+/* Technology Stack Styling */
+.project-tech-stack p {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    margin: 1rem 0;
+}
+
+/* Impact Metrics */
+.project-impact p {
+    background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+    color: #2d3436;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    font-weight: 600;
+    border-left: 5px solid #e17055;
+    margin: 1rem 0;
+    box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #projects .inner {
+        padding: 2.5rem;
+    }
+    
+    .project-icon-header h2 {
+        font-size: 2.4rem !important;
+    }
+    
+    .project-icon-header .icon {
+        font-size: 3.5rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #projects .inner h2 {
+        font-size: 3.5rem;
+    }
+    
+    #projects .inner {
+        padding: 2rem;
+    }
+    
+    .project-icon-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .project-icon-header .icon {
+        margin-right: 0 !important;
+        font-size: 3rem !important;
+    }
+    
+    .project-icon-header h2 {
+        font-size: 2rem !important;
+    }
+    
+    .project-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #projects .inner {
+        padding: 1.5rem;
+    }
+    
+    #projects .inner h2 {
+        font-size: 2.8rem;
+    }
+    
+    .project-icon-header h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .project-achievements li {
+        padding-left: 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Color Variables for Different Project Categories */
+.clinical-project { --icon-color: #4CAF50; --icon-color-dark: #45a049; }
+.ai-project { --icon-color: #FF9800; --icon-color-dark: #f57c00; }
+.healthcare-project { --icon-color: #E91E63; --icon-color-dark: #c2185b; }
+.infrastructure-project { --icon-color: #607D8B; --icon-color-dark: #546e7a; }
+.automation-project { --icon-color: #FF5722; --icon-color-dark: #e64a19; }
+.research-project { --icon-color: #9C27B0; --icon-color-dark: #8e24aa; }
+.integration-project { --icon-color: #795548; --icon-color-dark: #6d4c41; }
+.analytics-project { --icon-color: #00BCD4; --icon-color-dark: #00acc1; }
+
+/* Scroll Animation Trigger */
+.project-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.project-animate.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Loading State */
+.project-loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: loadingShimmer 1.5s infinite;
+}
+
+@keyframes loadingShimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}

@@ -1,0 +1,210 @@
+/* Responsive Enhancements for Mobile and Tablet */
+
+/* Enhanced Mobile Navigation */
+@media (max-width: 768px) {
+    #projects .inner h2 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    #projects .inner p {
+        font-size: 1.6rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .project-icon-header {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .project-icon-header .icon {
+        margin-right: 0 !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .project-icon-header h2 {
+        text-align: center;
+        font-size: 2.2rem !important;
+    }
+    
+    .project-meta {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .project-meta span {
+        padding: 0.5rem;
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+    }
+    
+    /* Reduce margins and padding for mobile */
+    #projects .inner {
+        padding: 1.5rem;
+    }
+    
+    #projects section {
+        margin-bottom: 2.5rem;
+    }
+    
+    .project-overview,
+    .project-achievements,
+    .project-tech-stack,
+    .project-impact {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Smaller achievement list items */
+    .project-achievements li {
+        padding: 0.4rem 0 0.4rem 1.5rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #projects .inner h2 {
+        font-size: 3.8rem;
+    }
+    
+    .project-icon-header h2 {
+        font-size: 2.5rem !important;
+    }
+    
+    .project-icon-header .icon {
+        font-size: 3.5rem !important;
+    }
+    
+    #projects .inner {
+        padding: 2.5rem;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    #projects .inner h2 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    #projects .inner p {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+    }
+    
+    .project-icon-header h2 {
+        font-size: 1.8rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .project-icon-header .icon {
+        font-size: 2.8rem !important;
+    }
+    
+    #projects .inner {
+        padding: 1rem;
+    }
+    
+    #projects section {
+        margin-bottom: 2rem;
+    }
+    
+    .project-achievements li {
+        font-size: 0.9rem;
+        padding: 0.3rem 0 0.3rem 1.2rem;
+    }
+    
+    .project-tech-stack p,
+    .project-impact p {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Large Screens Optimizations */
+@media (min-width: 1400px) {
+    #projects .inner {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    #projects .inner h2 {
+        font-size: 5rem;
+    }
+    
+    .project-icon-header h2 {
+        font-size: 3.2rem !important;
+    }
+    
+    .project-icon-header .icon {
+        font-size: 4.5rem !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #projects {
+        background: white !important;
+        color: black !important;
+    }
+    
+    #projects::before {
+        display: none;
+    }
+    
+    #projects .content {
+        background: white !important;
+        box-shadow: none !important;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+    
+    .project-icon-header .icon {
+        color: #333 !important;
+    }
+    
+    .project-tech-stack p,
+    .project-impact p {
+        background: #f8f9fa !important;
+        color: #333 !important;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    #projects .content {
+        border: 2px solid #000;
+    }
+    
+    .project-icon-header h2 {
+        color: #000 !important;
+    }
+    
+    .project-achievements li::before {
+        color: #000 !important;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    #projects section {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .project-animate {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
