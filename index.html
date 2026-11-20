@@ -1,758 +1,891 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pawan Rama Mali - Research Scholar at IIT Dharwad and Lead Developer with extensive experience in R Shiny applications, Python development, and data visualization. Technical Consultant specializing in CDISC SDTM standards.">
-    <meta name="theme-color" content="#212121">
-    <title>Pawan Rama Mali — Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pawan Rama Mali · Portfolio</title>
+<meta name="description" content="Pawan Rama Mali. Clinical data and machine learning engineering for life sciences. R, Python, CDISC, and open-source author.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&family=Kaushan+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%239a3b2e'/%3E%3Ctext%20x='16'%20y='25'%20font-family='cursive'%20font-size='23'%20text-anchor='middle'%20fill='%23faf8f4'%3Ep%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#fafaf8;
+    --paper:#ffffff;
+    --ink:#161614;
+    --muted:#6b6b64;
+    --faint:#9a9a92;
+    --line:#e5e4de;
+    --line-strong:#cbcac2;
+    --accent:#9a3b2e;
+    --accent-soft:#f1e7e4;
+    --maxw:1180px;
+    --gutter:clamp(18px, 5vw, 72px);
+    --ease:cubic-bezier(.22,.7,.2,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:500;letter-spacing:-0.01em;margin:0;}
+  ::selection{background:var(--accent-soft);color:var(--accent);}
 
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="PawanRamaMali">
-    <meta name="twitter:title" content="Pawan Rama Mali — Research Scholar & R Shiny Developer">
-    <meta name="twitter:description" content="Research Scholar at IIT Dharwad & Lead Developer specializing in R Shiny applications">
-    <meta name="twitter:creator" content="@PawanRamaMali">
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter);width:100%;}
+  .section{padding:clamp(60px,9vw,128px) 0;border-top:1px solid var(--line);position:relative;}
+  .section-head{margin-bottom:clamp(38px,6vw,66px);max-width:62ch;}
+  .section-num{font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);font-weight:600;display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+  .section-num::before{content:"";width:26px;height:1px;background:var(--accent);opacity:.55;}
+  .section-title{font-size:clamp(28px,4.6vw,46px);line-height:1.06;}
+  .section-kicker{color:var(--muted);margin-top:14px;font-size:15.5px;max-width:58ch;}
 
-    <meta property="fb:admins" content="100000581280466" />
-    <meta property="fb:app_id" content="1473140929606808" />
-    <meta property="og:type" content="profile" />
-    <meta property="profile:first_name" content="Pawan" />
-    <meta property="profile:last_name" content="Rama-Mali" />
-    <meta property="profile:gender" content="male" />
-    <meta property="profile:username" content="PawanRamaMali" />
-    <meta property="og:site_name" content="Pawan Rama Mali" />
-    <meta property="og:title" content="Pawan Rama Mali — Research Scholar & R Shiny Developer" />
-    <meta property="og:description" content="Research Scholar at IIT Dharwad & Lead Developer specializing in R Shiny applications" />
-    <meta property="og:image" content="/images/sharing.png" />
+  /* ---- scroll progress ---- */
+  .progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:60;transition:width .1s linear;}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel='stylesheet'
-        href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Titillium+Web:wght@300;600&family=Expletus+Sans:wght@300;700&family=Domine:wght@400;700&display=swap'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.3/dist/aos.css">
+  /* ---- reveal animations ---- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+  .reveal.is-visible{opacity:1;transform:none;}
+  .stagger > *{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  .stagger.is-visible > *{opacity:1;transform:none;}
+  .stagger.is-visible > *:nth-child(1){transition-delay:.04s}
+  .stagger.is-visible > *:nth-child(2){transition-delay:.09s}
+  .stagger.is-visible > *:nth-child(3){transition-delay:.14s}
+  .stagger.is-visible > *:nth-child(4){transition-delay:.19s}
+  .stagger.is-visible > *:nth-child(5){transition-delay:.24s}
+  .stagger.is-visible > *:nth-child(6){transition-delay:.29s}
+  .stagger.is-visible > *:nth-child(7){transition-delay:.34s}
+  .stagger.is-visible > *:nth-child(8){transition-delay:.39s}
 
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/projects-redesign.css">
+  /* ---- Nav ---- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(250,250,248,0.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px;}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Fraunces';font-weight:600;font-size:17px;letter-spacing:-0.01em;}
+  .brand .mark{width:38px;height:38px;flex:none;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;font-family:'Kaushan Script',cursive;font-weight:400;font-size:20px;line-height:1;color:var(--accent);border-radius:4px;background:var(--paper);overflow:hidden;position:relative;}
+  .brand .mark span{display:block;transform:translateY(1px);}
+  .brand .mark::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 40%,rgba(154,59,46,.14),transparent 60%);transform:translateX(-120%);animation:sheen 5.5s var(--ease) infinite;}
+  @keyframes sheen{0%,70%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+  .nav-links{display:flex;gap:24px;align-items:center;}
+  .nav-links a{position:relative;font-size:13px;letter-spacing:0.03em;color:var(--muted);transition:color .18s;white-space:nowrap;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.active{color:var(--accent);}
+  .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease);}
+  .nav-links a.active::after,.nav-links a:hover::after{transform:scaleX(1);}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line-strong);border-radius:3px;width:42px;height:38px;color:var(--ink);font-size:16px;cursor:pointer;}
 
-    <!-- Favicon optimized -->
-    <link rel="icon" type="image/x-icon" href="logo.jpg">
-    <link rel="apple-touch-icon" href="logo.jpg">
+  /* ---- Hero ---- */
+  .hero{position:relative;padding:clamp(70px,13vw,150px) 0 clamp(54px,9vw,104px);border-top:none;overflow:hidden;}
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;background-image:radial-gradient(var(--line-strong) 1px,transparent 1.4px);background-size:30px 30px;opacity:.28;-webkit-mask-image:radial-gradient(130% 90% at 18% 10%,#000,transparent 72%);mask-image:radial-gradient(130% 90% at 18% 10%,#000,transparent 72%);}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,0.95fr);gap:clamp(28px,5vw,56px);align-items:center;}
+  .hero-eyebrow{display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:28px;}
+  .hero-eyebrow .rule{height:1px;width:44px;background:var(--accent);opacity:.55;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--ease) .15s;}
+  body.loaded .hero-eyebrow .rule{transform:scaleX(1);}
+  .hero h1{font-size:clamp(46px,10.5vw,120px);line-height:0.92;font-weight:600;letter-spacing:-0.03em;margin:0 0 28px;}
+  .hero h1 .light{font-style:italic;font-weight:400;color:var(--muted);}
+  .hero-tag{font-family:'Fraunces';font-size:clamp(18px,2.4vw,25px);font-weight:400;color:var(--ink);max-width:30ch;line-height:1.32;margin-bottom:34px;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;font-size:14px;letter-spacing:0.02em;font-weight:500;border:1px solid var(--ink);border-radius:3px;transition:all .22s var(--ease);}
+  .btn.primary{background:var(--ink);color:var(--paper);}
+  .btn.primary:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px);}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);}
+  .btn i{transition:transform .22s var(--ease);}
+  .btn.primary:hover i{transform:translateY(3px);}
 
-    <script type='application/ld+json'>
-        {
-            "@context": "http://www.schema.org",
-            "@type": "Person",
-            "name": "Pawan Rama Mali",
-            "jobTitle": "Research Scholar at IIT Dharwad - Lead Developer - R Shiny Applications - Technical Consultant",
-            "url": "https://PawanRamaMali.github.io",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Belgaum",
-                "addressCountry": "India"
-            },
-            "email": "prm@outlook.in",
-            "birthDate": "1993-04-11",
-            "sameAs": [
-                "https://www.facebook.com/PawanRM",
-                "https://www.linkedin.com/in/Pawan-Rama-Mali/",
-                "https://twitter.com/PawanRamaMali",
-                "https://github.com/PawanRamaMali",
-                "https://www.instagram.com/Pawan_Rama_Mali/"
-            ]
-        }
-    </script>
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'>
-    <link rel="stylesheet" href="./css/project/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/project/animate.css">
-    <link rel="stylesheet" href="./css/project/Projectsstyle.css">
-    <link rel="stylesheet" href="assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-  <link
-        href='https://fonts.googleapis.com/css?family=Dosis:200,300,400,500|Lato:300,400,700,900,300italic,400italic,700italic,900italic|Raleway:400,200,300,500,100|Titillium+Web:400,200,300italic,300,200italic'
-        rel='stylesheet' type='text/css'>
-    <script src="./js/modernizr.js"></script>
+  /* hero aside */
+  .hero-aside{align-self:center;display:flex;flex-direction:column;background:rgba(255,255,255,.62);border:1px solid var(--line);border-radius:6px;padding:4px 22px 10px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+  .hero-aside .ak{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--faint);font-weight:600;padding:14px 0 2px;}
+  .hero-aside .row{display:flex;align-items:flex-start;gap:13px;padding:14px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted);}
+  .hero-aside .row i{color:var(--accent);width:16px;text-align:center;margin-top:4px;flex:none;}
+  .hero-aside .row b{display:block;color:var(--ink);font-weight:600;font-size:13.5px;line-height:1.3;}
+  .hero-aside .row span{font-size:12.5px;line-height:1.4;}
+
+  /* hero entrance */
+  .hero-eyebrow,.hero h1,.hero-tag,.hero-actions,.hero-aside{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+  body.loaded .hero-eyebrow{opacity:1;transform:none;transition-delay:.05s;}
+  body.loaded .hero h1{opacity:1;transform:none;transition-delay:.14s;}
+  body.loaded .hero-tag{opacity:1;transform:none;transition-delay:.26s;}
+  body.loaded .hero-actions{opacity:1;transform:none;transition-delay:.36s;}
+  body.loaded .hero-aside{opacity:1;transform:none;transition-delay:.44s;}
+
+  .scroll-cue{position:relative;z-index:1;margin-top:clamp(40px,7vw,80px);display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--faint);}
+  .scroll-cue .bar{position:relative;width:40px;height:1px;background:var(--line-strong);overflow:hidden;}
+  .scroll-cue .bar::after{content:"";position:absolute;left:0;top:0;height:100%;width:40%;background:var(--accent);animation:slide 2.4s var(--ease) infinite;}
+  @keyframes slide{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}
+
+  /* ---- About ---- */
+  .two-col{display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.25fr);gap:clamp(28px,6vw,80px);align-items:start;}
+  .two-col .col{border-top:1px solid var(--line-strong);padding-top:26px;}
+  .col-k{display:block;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--faint);font-weight:600;margin-bottom:20px;}
+  .lead{font-family:'Fraunces';font-size:clamp(20px,2.7vw,28px);line-height:1.38;font-weight:400;letter-spacing:-0.012em;margin:0;}
+  .lead .accent{color:var(--accent);}
+  .about-body p{color:var(--muted);margin:0 0 18px;max-width:60ch;}
+  .about-body p:last-child{margin-bottom:0;}
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(40px,6vw,64px);}
+  .stat{background:var(--paper);padding:26px 24px;}
+  .stat .num{font-family:'Fraunces';font-size:clamp(34px,5vw,48px);font-weight:600;line-height:1;letter-spacing:-0.02em;color:var(--ink);}
+  .stat .num .suf{color:var(--accent);}
+  .stat .lbl{margin-top:10px;font-size:13px;color:var(--muted);line-height:1.4;}
+
+  /* ---- Experience ---- */
+  .exp-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,0.9fr);gap:clamp(32px,6vw,72px);align-items:start;}
+  .timeline{position:relative;margin:0;padding:2px 0 2px 36px;list-style:none;}
+  .timeline::before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:1px;background:var(--line-strong);transform:scaleY(0);transform-origin:top;transition:transform 1s var(--ease) .1s;}
+  .timeline.is-visible::before{transform:scaleY(1);}
+  .timeline li{position:relative;padding:0 0 34px;opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease);}
+  .timeline.is-visible li{opacity:1;transform:none;}
+  .timeline.is-visible li:nth-child(2){transition-delay:.12s}
+  .timeline.is-visible li:nth-child(3){transition-delay:.24s}
+  .timeline.is-visible li:nth-child(4){transition-delay:.36s}
+  .timeline li:last-child{padding-bottom:0;}
+  .timeline li::before{content:"";position:absolute;left:-32px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--paper);border:2px solid var(--accent);box-shadow:0 0 0 5px var(--bg);transition:background .2s;}
+  .timeline li:hover::before{background:var(--accent);}
+  .t-date{display:inline-flex;align-items:center;gap:7px;font-family:'Fraunces';font-size:14px;letter-spacing:0.01em;color:var(--accent);font-weight:500;margin-bottom:6px;}
+  .t-title{font-size:17px;font-family:'Inter';font-weight:600;margin:0 0 3px;letter-spacing:-0.005em;}
+  .t-sub{font-size:13.5px;color:var(--muted);margin:0 0 10px;}
+  .t-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .mini-tag{font-size:11px;letter-spacing:0.02em;color:var(--muted);border:1px solid var(--line-strong);border-radius:100px;padding:2px 10px;}
+  .now-card{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:28px;position:sticky;top:90px;}
+  .now-card .nk{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--faint);font-weight:600;display:flex;align-items:center;gap:9px;margin-bottom:16px;}
+  .now-card .nk .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);position:relative;}
+  .now-card .nk .pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:pulse 2s ease-out infinite;}
+  @keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(3.4);opacity:0}}
+  .now-card h3{font-size:18px;font-weight:500;margin-bottom:8px;letter-spacing:-0.01em;}
+  .now-card p{font-size:14px;color:var(--muted);margin:0 0 18px;line-height:1.55;}
+  .now-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;}
+  .now-card li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:13.5px;color:var(--ink);align-items:start;}
+  .now-card li i{color:var(--accent);font-size:11px;margin-top:4px;}
+
+  /* ---- Skills ---- */
+  .skills-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);}
+  .skill-card{background:var(--paper);padding:28px 24px;display:flex;flex-direction:column;gap:13px;min-height:196px;transition:background .25s var(--ease);position:relative;overflow:hidden;}
+  .skill-card::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);}
+  .skill-card:hover{background:#fcfbf9;}
+  .skill-card:hover::after{transform:scaleX(1);}
+  .skill-card .ic{width:42px;height:42px;border:1px solid var(--line-strong);border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:17px;transition:all .25s var(--ease);}
+  .skill-card:hover .ic{background:var(--accent);color:var(--paper);border-color:var(--accent);}
+  .skill-card h3{font-size:15.5px;font-family:'Inter';font-weight:600;letter-spacing:-0.005em;line-height:1.25;}
+  .skill-card p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5;}
+
+  /* ---- Projects ---- */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);}
+  .proj-card{background:var(--paper);padding:30px 30px 28px;display:flex;flex-direction:column;gap:12px;transition:background .22s var(--ease),transform .22s var(--ease);position:relative;overflow:hidden;}
+  .proj-card::before{content:"";position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 0 26px 26px;border-color:transparent transparent transparent transparent;transition:border-color .25s var(--ease);}
+  .proj-card:hover{background:#fcfbf9;}
+  .proj-card:hover::before{border-color:transparent transparent var(--accent-soft) transparent;}
+  .proj-top{display:flex;align-items:baseline;gap:14px;}
+  .proj-num{font-family:'Fraunces';font-size:14px;color:var(--faint);font-weight:500;line-height:1.4;flex:none;}
+  .proj-card h3{font-size:19px;line-height:1.18;font-weight:500;letter-spacing:-0.012em;}
+  .proj-role{font-size:12px;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+  .proj-card p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.52;}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:8px;}
+  .tag{font-size:11.5px;letter-spacing:0.02em;color:var(--muted);border:1px solid var(--line-strong);border-radius:100px;padding:3px 11px;white-space:nowrap;}
+
+  /* ---- Open source ---- */
+  .os-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);}
+  .os-card{background:var(--paper);padding:30px;display:flex;flex-direction:column;gap:14px;transition:background .22s var(--ease);}
+  .os-card:hover{background:#fcfbf9;}
+  .os-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .os-head h3{font-size:21px;font-weight:500;letter-spacing:-0.012em;}
+  .os-badge{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-weight:600;background:var(--accent-soft);border-radius:100px;padding:4px 12px;white-space:nowrap;}
+  .os-role{font-size:12px;letter-spacing:0.07em;text-transform:uppercase;color:var(--faint);font-weight:600;}
+  .os-card p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.55;}
+  .os-metrics{display:flex;flex-wrap:wrap;gap:22px;padding:4px 0 2px;}
+  .os-metric{display:flex;flex-direction:column;gap:2px;}
+  .os-metric b{font-family:'Fraunces';font-size:22px;font-weight:600;line-height:1;color:var(--ink);}
+  .os-metric span{font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--faint);}
+  .repo-link{margin-top:auto;padding-top:6px;font-size:13px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:8px;overflow-wrap:anywhere;word-break:break-word;}
+  .repo-link i{transition:transform .22s var(--ease);}
+  .repo-link:hover{text-decoration:underline;}
+  .repo-link:hover i{transform:translate(2px,-2px);}
+
+  /* ---- Education + Certs ---- */
+  .edu-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);gap:clamp(32px,6vw,72px);}
+  .block-label{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--faint);font-weight:600;margin-bottom:26px;display:flex;align-items:center;gap:12px;}
+  .block-label .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;flex:none;}
+  .cert-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line);}
+  .cert-list li{padding:14px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:20px 1fr;gap:12px;font-size:14.5px;line-height:1.45;transition:padding-left .2s var(--ease);}
+  .cert-list li:hover{padding-left:6px;}
+  .cert-list i{color:var(--accent);padding-top:3px;font-size:12px;}
+  .cert-list b{font-weight:600;}
+  .cert-list .yr{color:var(--faint);}
+
+  /* ---- Contact ---- */
+  .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,72px);align-items:start;}
+  .contact-head h2{font-size:clamp(32px,6vw,58px);line-height:1.02;letter-spacing:-0.02em;margin-bottom:20px;}
+  .contact-head h2 em{font-style:italic;color:var(--accent);font-weight:400;}
+  .contact-head p{color:var(--muted);max-width:40ch;}
+  .contact-lines{border-top:1px solid var(--line);}
+  .contact-lines a,.contact-lines .ci{display:grid;grid-template-columns:28px 1fr auto;gap:14px;align-items:center;padding:17px 0;border-bottom:1px solid var(--line);font-size:15px;transition:color .18s,padding-left .2s var(--ease);}
+  .contact-lines a:hover{color:var(--accent);padding-left:6px;}
+  .contact-lines i{color:var(--accent);width:18px;text-align:center;}
+  .contact-lines .cval{color:var(--ink);overflow-wrap:anywhere;}
+  .contact-lines a:hover .cval{color:var(--accent);}
+  .contact-lines .arrow{color:var(--faint);font-size:12px;}
+  .socials{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;}
+  .socials a{width:46px;height:46px;border:1px solid var(--line-strong);border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:16px;transition:all .22s var(--ease);background:var(--paper);}
+  .socials a:hover{color:var(--paper);background:var(--accent);border-color:var(--accent);transform:translateY(-3px);}
+
+  /* ---- Footer ---- */
+  footer{border-top:1px solid var(--line-strong);padding:40px 0;}
+  .footer-inner{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;}
+  .footer-inner .fb{display:flex;align-items:center;gap:11px;font-family:'Fraunces';font-weight:600;font-size:15px;}
+  .footer-inner .fmark{width:30px;height:30px;border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;font-family:'Kaushan Script',cursive;font-size:16px;line-height:1;color:var(--accent);border-radius:3px;overflow:hidden;}
+  .footer-inner .fmark span{display:block;transform:translateY(1px);}
+  .footer-inner small{color:var(--faint);font-size:13px;}
+  .to-top{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:8px;}
+  .to-top:hover{color:var(--accent);}
+
+  /* ---- Marquee ---- */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper);overflow:hidden;white-space:nowrap;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+  .marquee-track{display:inline-flex;align-items:center;padding:17px 0;animation:marq 36s linear infinite;will-change:transform;}
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  .m-item{font-family:'Fraunces';font-size:15px;color:var(--muted);padding:0 30px;position:relative;letter-spacing:0.01em;}
+  .m-item::after{content:"";position:absolute;right:-3px;top:50%;width:4px;height:4px;background:var(--accent);opacity:.5;border-radius:50%;transform:translateY(-50%);}
+  @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---- Floating back-to-top with progress ring ---- */
+  .totop{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;background:var(--paper);border:1px solid var(--line-strong);display:flex;align-items:center;justify-content:center;color:var(--ink);z-index:55;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s var(--ease),transform .3s var(--ease),color .2s;}
+  .totop.show{opacity:1;visibility:visible;transform:none;}
+  .totop:hover{color:var(--accent);}
+  .totop svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg);}
+  .totop circle{fill:none;stroke-width:2;}
+  .totop .ring-bg{stroke:var(--line);}
+  .totop .ring-fg{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .1s linear;}
+  .totop i{font-size:14px;position:relative;z-index:1;}
+
+  /* ---- Responsive ---- */
+  @media(max-width:1120px){
+    .nav-links{gap:18px;}
+  }
+  @media(max-width:980px){
+    .nav-links{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px var(--gutter) 16px;}
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:14px 0;border-bottom:1px solid var(--line);font-size:15px;width:100%;}
+    .nav-links a:last-child{border-bottom:none;}
+    .nav-links a::after{display:none;}
+    .nav-toggle{display:inline-flex;align-items:center;justify-content:center;}
+    .hero-grid{grid-template-columns:1fr;align-items:start;gap:34px;}
+    .two-col,.exp-grid,.edu-grid,.contact-grid{grid-template-columns:1fr;}
+    .hero-aside{align-self:stretch;max-width:440px;}
+    .now-card{position:static;}
+    .skills-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .stats{grid-template-columns:repeat(2,minmax(0,1fr));}
+  }
+  @media(max-width:760px){
+    .section{padding:clamp(48px,11vw,76px) 0;}
+    .hero{padding:72px 0 54px;}
+    .hero h1{font-size:clamp(42px,13vw,76px);}
+    .proj-card,.os-card{padding:24px;}
+    .now-card{padding:24px;}
+  }
+  @media(max-width:640px){
+    .proj-grid,.os-grid{grid-template-columns:1fr;}
+    .contact-lines a,.contact-lines .ci{grid-template-columns:24px 1fr;}
+    .contact-lines .arrow{display:none;}
+  }
+  @media(max-width:480px){
+    .skills-grid,.stats{grid-template-columns:1fr;}
+    .hero-actions{gap:10px;}
+    .hero-actions .btn{flex:1 1 auto;justify-content:center;}
+    .hero-aside{max-width:none;}
+    .m-item{font-size:14px;padding:0 22px;}
+    .totop{right:16px;bottom:16px;width:44px;height:44px;}
+    .section-num{font-size:11px;}
+  }
+  @media(max-width:360px){
+    .hero h1{font-size:40px;}
+    .stat .num{font-size:34px;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none!important;animation:none!important;}
+    .reveal,.stagger>*,.timeline li,.hero-eyebrow,.hero h1,.hero-tag,.hero-actions,.hero-aside{opacity:1!important;transform:none!important;}
+    .timeline::before,.hero-eyebrow .rule{transform:none!important;}
+  }
+</style>
 </head>
+<body>
 
-<body id="top">
+<div class="progress" id="progress" aria-hidden="true"></div>
 
-    
-
-    <section id="home" class="s-home target-section" role="banner">
-            <div class="shadow-overlay" id="wave" aria-hidden="true"></div>
-            <div class="home-content">
-                <div class="row home-content__main">
-                    <h1>Pawan Rama Mali</h1>
-                    <p>Research Scholar @ IIT Dharwad <br><span style="font-size: smaller;">Lead Developer | R Shiny & Python Specialist</span></p> 
-                </div>
-            </div>
-            <a href="#intro" class="home-scroll smoothscroll" aria-label="Scroll down to introduction section">
-                <span class="home-scroll__text">Scroll Down</span>
-                <span class="home-scroll__icon" aria-hidden="true"></span>
-            </a>
-        </section>
-
-    
-
-	<!-- Sidebar -->
-		<section id="sidebar">
-			<div class="inner">
-				<nav>
-					<ul>
-						<li><a href="#intro">Profile Summary</a></li>
-                        <li><a href="#professional-summary">Professional Summary </a></li>
-						<li><a href="#tech-skills">Education & Skills</a></li>
-						<li><a href="#projects">Projects</a></li>
-						<li><a href="#contact">Contact</a></li>
-					</ul>
-				</nav>
-			</div>
-		</section>
-
-	<!-- Wrapper -->
-		<div id="wrapper">
-
-				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-					
-						<div class="inner">
-							<h1>Introduction</h1>
-                            <p>
-                                Research Scholar at IIT Dharwad, working on data science and applied machine learning.<br>
-                                Lead Developer who designs and builds R Shiny applications and custom R and Python solutions.<br>
-                                Currently a Technical Consultant at Techworkslab, focused on interactive data visualization and reliable, scalable tools for analytical work.<br> 
-                            </p>
-                            <p>
-                                I enjoy turning data into applications that are easy to use and lead to clear decisions.<br>
-                                My work spans CDISC SDTM standards, API development, production deployment of data products, and academic research in AI and ML.
-                            </p>
-                            
-                            
-                            <ul class="actions">
-								<li><a href="#professional-summary" class="button scrolly">Professional Summary</a></li>
-							</ul>
-						</div>
-					</section>
-
-                    <!-- Intro -->
-					<section id="professional-summary" class="wrapper style1 fullscreen fade-up">
-						<div class="inner">
-							<h1>Professional Summary</h1>
-                           
-							<ul>
-								<li><strong>Production-Scale Deployment:</strong> Ships Shiny applications, APIs and data pipelines to production through CI/CD, built to stay available and scale</li>
-								<li><strong>Standards Implementation:</strong> Implements CDISC SDTM standards and builds regulatory-compliant clinical data workflows in R</li>
-								<li><strong>Code Quality & Documentation:</strong> Writes clear package documentation and test cases, following good practice in R and Python</li>
-								<li><strong>API Integration & Data Interoperability:</strong> Builds and connects APIs so applications and platforms can share data reliably</li>
-								<li><strong>Leadership & Collaboration:</strong> Leads development teams, mentors junior developers and works closely with other functions to get results</li>
-								<li><strong>R Shiny Expertise:</strong> Builds interactive visualizations and complete R Shiny applications for a wide range of clients</li>
-								<li><strong>Technical Stack:</strong> R, Python (Flask, FastAPI, Django), GitLab, Docker, Linux, MongoDB, PostgreSQL and AWS</li>
-								<li><strong>Clinical Data Experience:</strong> Clinical trial reporting systems, SDTM/ADaM programming and regulatory compliance workflows</li>
-								<li><strong>Automated Testing & CI/CD:</strong> Introduced automated testing and continuous integration to make releases more reliable</li>
-								<li><strong>Training & Mentorship:</strong> Runs training sessions for client teams on R programming, Shiny development and API design</li>
-							</ul>
-							  
-
-                           
-                    
-                            
-                            <ul class="actions">
-								<li><a href="#tech-skills" class="button scrolly">Education & Skills</a></li>
-							</ul>
-						</div>
-					</section>
-					
-				<!-- Tech Skills -->
-				<section id="tech-skills" class="wrapper style3 fade-up">
-					<div class="inner">
-						<h2>Education & Research</h2>
-						<li> <b>Present </b>  -  Research Scholar - IIT Dharwad (PhD in Data Science & AI) </li>
-						<li> <b>2022 </b>  -  M. Tech, Artificial Intelligence - Reva University </li>
-						<li> <b>2016 </b>  -  B. Tech, Aerospace Engineering - Hindustan Aviation Academy </li>
-						<li> <b>2011 </b>  -  12th Standard - Kendriya Vidyalaya, Belgaum </li>
-						<li> <b>2009 </b>  -  10th Standard - Army Public School, Darjeeling </li>
-						<br>
-						
-						<h2>Key Certifications</h2>
-						<li> <b>Microsoft Certified:</b> Azure AI Engineer Associate </li>
-						<li> <b>Kaggle:</b> Natural Language Processing & Python </li>
-						<li> <b>LinkedIn:</b> Advanced NLP with Python for Machine Learning </li>
-						<li> <b>LinkedIn:</b> Building Deep Learning Applications with Keras & TensorFlow </li>
-						<li> <b>Udemy:</b> R Shiny Interactive Web Apps & Advanced Analytics </li>
-						<br>
-						
-						<h2>Skills</h2>
-						<div class="features">
-							<section>
-								<span class="icon solid major fa-code"></span>
-								<h3>R Shiny Development</h3>
-								<p> Production-grade R Shiny Applications <br>
-									Interactive Data Visualizations <br>
-									Performance Optimization </p>
-							</section>
-							<section>
-								<span class="icon solid major fa-database"></span>
-								<h3>Data & Analytics</h3>
-								<p> CDISC SDTM Standards <br>
-									Clinical Data Management <br>
-									Automated Analytics </p>
-							</section>
-							<section>
-								<span class="icon solid major fa-code"></span>
-								<h3>Programming Languages</h3>
-								<p> R (Expert) <br>
-									Python (Flask, FastAPI, Django) <br>
-									JavaScript, SAS </p>
-							</section>
-							<section>
-								<span class="icon solid major fa-cog"></span>
-								<h3>Development & Deployment</h3>
-								<p> Docker & Containerization <br>
-									GitLab CI/CD Pipelines <br>
-									Linux Server Administration </p>
-							</section>
-							<section>
-								<span class="icon solid major fa-link"></span>
-								<h3>API Development</h3>
-								<p> RESTful API Design <br>
-									R Plumber APIs <br>
-									API Integration & Testing </p>
-							</section>
-							<section>
-								<span class="icon solid major fa-database"></span>
-								<h3>Database Technologies</h3>
-								<p> MongoDB, PostgreSQL <br>
-									SQL Server, SQLite <br>
-									Data Pipeline Design </p>
-							</section>
-							<section>
-								<span class="icon solid major fa-cloud"></span>
-								<h3>Cloud & Infrastructure</h3>
-								<p> AWS Services <br>
-									Azure AI Engineer Associate <br>
-									Production Deployments </p>
-							</section>
-							<section>
-								<span class="icon solid major fa-check-circle"></span>
-								<h3>Quality & Documentation</h3>
-								<p> Automated Testing Frameworks <br>
-									R Markdown Documentation <br>
-									Package Development </p>
-							</section>
-						</div>
-						<ul class="actions">
-							<li><a href="#projects" class="button">View Projects</a></li>
-						</ul>
-					</div>
-				</section>
-
-					
-				<!-- Projects -->
-				<section id="projects" class="wrapper style2 spotlights">
-					<div class="inner">
-						<h2 style="text-align: center; margin-bottom: 2rem;">Featured Projects Portfolio</h2>
-						<p style="text-align: center; margin-bottom: 3rem;">Selected work in clinical data, AI/ML research and enterprise applications</p>
-					</div>
-					
-					<!-- Clinical Data & Healthcare Analytics -->
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div class="project-icon-header clinical-project">
-									<span class="icon solid major fa-file-medical"></span>
-									<h2>Clinical Trials Reporting System</h2>
-								</div>
-								<p><strong>Role:</strong> Lead Developer | <strong>Duration:</strong> 12 months | <strong>Regulatory Focus:</strong> FDA/EMA Compliance</p>
-								<p><strong>Project Overview:</strong><br>
-								Designed and built an end-to-end reporting system for clinical trials that takes raw data all the way to submission-ready reports. It produces SDTM (Study Data Tabulation Model), ADaM (Analysis Data Model) and TLG (Tables, Listings, and Graphics) outputs in line with CDISC standards, and generates the Clinical Study Report (CSR) automatically.
-								</p>
-								<p><strong>Key Achievements:</strong><br>
-								• Cut report generation from 6 weeks to 2 days (95% time savings)<br>
-								• Reached 100% CDISC compliance through automated validation checks<br>
-								• Added version control and audit trails for regulatory transparency<br>
-								• Processed multiple studies in parallel, reducing resource bottlenecks by 80%
-								</p>
-								<p><strong>Technical Architecture:</strong> R (statistical computing), R Markdown (reports), SAS (legacy integration), GitLab CI/CD (automation), Docker (containers), Linux (deployment)</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-shield-alt" style="font-size: 3rem; color: #E91E63; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">Risk-Based Monitoring Dashboard</h2>
-								</div>
-								<p><strong>Role:</strong> Data Engineer | <strong>Duration:</strong> 4 months | <strong>Scope:</strong> Multi-site Clinical Trials</p>
-								<p><strong>Project Overview:</strong><br>
-								Built a risk-based monitoring system that uses statistical models and live data to spot problems at clinical trial sites early. The dashboard flags adverse events, detects protocol deviations and scores compliance across study sites automatically.
-								</p>
-								<p><strong>Key Features:</strong><br>
-								• Real-time statistical process control for adverse event detection<br>
-								• Predictive models to assess site performance<br>
-								• Automated alerts that cut manual review by 70%<br>
-								• Interactive charts that keep sites ready for regulatory inspection
-								</p>
-								<p><strong>Technical Stack:</strong> R Shiny (dashboard), statistical modeling, clinical data standards, real-time analytics</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-heartbeat" style="font-size: 3rem; color: #F44336; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">Cross-Trial Safety Analytics Dashboard</h2>
-								</div>
-								<p><strong>Role:</strong> Senior Developer | <strong>Duration:</strong> 5 months | <strong>Data Scope:</strong> 50+ Clinical Trials</p>
-								<p><strong>Project Overview:</strong><br>
-								Built a safety surveillance platform that combines adverse event data from many clinical trials to reveal safety signals, treatment patterns and possible drug interactions. It produces safety reports fit for regulatory use and supports pharmacovigilance work.
-								</p>
-								<p><strong>Technical Stack:</strong> R Shiny (frontend), statistical analysis, safety data mining, pharmacovigilance algorithms</p>
-							</div>
-						</div>
-					</section>
-
-					<!-- AI/ML & Research Projects -->
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div class="project-icon-header infrastructure-project">
-									<span class="icon solid major fa-server"></span>
-									<h2>ModelBox – Self-Hosted AI Inference Server</h2>
-								</div>
-								<p><strong>Role:</strong> Software Architect | <strong>Duration:</strong> 7 months | <strong>Performance:</strong> Sub-100ms inference</p>
-								<p><strong>Project Overview:</strong><br>
-								Designed and built a fast, self-hosted inference server for running machine learning models inside an organization. ModelBox serves models securely and at scale, with GPU acceleration, load balancing and API management. It supports several model formats and returns predictions in real time.
-								</p>
-								<p><strong>Key Achievements:</strong><br>
-								• Kept uptime at 99.9% with automatic failover and health checks<br>
-								• Scaled horizontally to handle 10,000+ concurrent requests<br>
-								• Tuned GPU usage to reach 85% efficiency in batch processing<br>
-								• Wrote full API documentation and SDKs for several languages
-								</p>
-								<p><strong>Technical Architecture:</strong> FastAPI (API), Python (core), Docker (containers), NVIDIA GPU (acceleration), Redis (caching), Prometheus (monitoring)</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div class="project-icon-header research-project">
-									<span class="icon solid major fa-eye"></span>
-									<h2>TL-SDD – Transfer Learning for Surface Defect Detection</h2>
-								</div>
-								<p><strong>Role:</strong> Research Lead | <strong>Duration:</strong> 10 months | <strong>Academic Output:</strong> 2 Publications</p>
-								<p><strong>Project Overview:</strong><br>
-								Led research into transfer learning methods for detecting surface defects in industrial settings. Reproduced and extended state-of-the-art few-shot learning models on the GC10-DET dataset, and built a complete pipeline for automated quality control in manufacturing.
-								</p>
-								<p><strong>Key Achievements:</strong><br>
-								• Reached 96.3% defect detection accuracy, 15% above the baseline<br>
-								• Developed new data augmentation methods for scarce defect samples<br>
-								• Built an evaluation framework adopted by 3 industrial partners<br>
-								• Published the methodology at top-tier computer vision conferences
-								</p>
-								<p><strong>Technical Stack:</strong> PyTorch (deep learning), computer vision, transfer learning, GC10-DET dataset, industrial automation</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-dna" style="font-size: 3rem; color: #8BC34A; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">Synthetic Oncology Data Explorer (POC)</h2>
-								</div>
-								<p><strong>Role:</strong> Full Stack Developer | <strong>Duration:</strong> 3 months | <strong>Focus:</strong> Proof of Concept</p>
-								<p><strong>Project Overview:</strong><br>
-								Built a proof-of-concept platform that lets oncology researchers explore synthetic tumor burden and biomarker data. It generates realistic clinical scenarios without using real patient records, so researchers can test hypotheses and build analysis workflows without touching sensitive data.
-								</p>
-								<p><strong>Key Features:</strong><br>
-								• Synthetic datasets covering 15+ oncology biomarkers with realistic correlations<br>
-								• Interactive filters for exploring data across several dimensions<br>
-								• Modular charts for analyzing tumor progression<br>
-								• Statistical checks to confirm data quality and clinical relevance
-								</p>
-								<p><strong>Technical Stack:</strong> R Shiny (frontend), synthetic data generation, oncology analytics, biostatistics, interactive visualization</p>
-							</div>
-						</div>
-					</section>
-
-					<!-- Infrastructure & Development Tools -->
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-cube" style="font-size: 3rem; color: #607D8B; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">R Package Development for Automated Analytics</h2>
-								</div>
-								<p><strong>Role:</strong> Package Architect | <strong>Duration:</strong> 6 months | <strong>Packages Created:</strong> 3 production packages</p>
-								<p><strong>Project Overview:</strong><br>
-								Designed and built a set of R packages that simplify analytics work and speed up development. They include 'autotestpkg' for automated unit testing and 'Rmarker' for generating documentation, along with CI/CD pipelines for releasing and maintaining the packages.
-								</p>
-								<p><strong>Technical Architecture:</strong> R package development, GitLab CI/CD pipelines, Docker, automated testing frameworks, documentation generation</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-exchange-alt" style="font-size: 3rem; color: #9E9E9E; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">CliniTransformR – SDTM/ADaM Programming Suite</h2>
-								</div>
-								<p><strong>Role:</strong> Lead Developer & CDISC Specialist | <strong>Duration:</strong> 9 months | <strong>Compliance:</strong> FDA/EMA Standards</p>
-								<p><strong>Project Overview:</strong><br>
-								Built an R package suite that converts raw clinical datasets into compliant SDTM (Study Data Tabulation Model) and ADaM (Analysis Data Model) formats. It includes validation, quality control and automated compliance checks so the outputs are ready for regulatory submission.
-								</p>
-								<p><strong>Key Achievements:</strong><br>
-								• Converted 100+ raw clinical datasets automatically with 99.8% accuracy<br>
-								• Built-in validation for 200+ CDISC compliance rules<br>
-								• Cut manual programming from weeks to hours (95% time savings)<br>
-								• Quality control reports with traceability matrices
-								</p>
-								<p><strong>Technical Stack:</strong> R, CDISC standards (SDTM/ADaM), data validation frameworks, clinical programming, regulatory compliance</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-layer-group" style="font-size: 3rem; color: #3F51B5; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">Reusable Shiny UI Component Library</h2>
-								</div>
-								<p><strong>Role:</strong> Component Architect & UI Designer | <strong>Duration:</strong> 4 months | <strong>Components:</strong> 50+ reusable elements</p>
-								<p><strong>Project Overview:</strong><br>
-								Designed and built a library of reusable R Shiny UI components that keeps apps visually consistent, speeds up development and holds a common design standard across client projects. It includes modals, notifications, data grids and loading states.
-								</p>
-								<p><strong>Key Achievements:</strong><br>
-								• Cut UI development time by 70% on new Shiny projects<br>
-								• Shared design language adopted by 25+ applications<br>
-								• Responsive components that work on mobile, tablet and desktop<br>
-								• Theming system so each client can apply its own branding
-								</p>
-								<p><strong>Technical Architecture:</strong> R Shiny (core), component-based design, CSS3 (styling), JavaScript (interactions), responsive design</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-rocket" style="font-size: 3rem; color: #FF5722; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">CI/CD Automation for Shiny Deployments</h2>
-								</div>
-								<p><strong>Role:</strong> DevOps Engineer & Automation Architect | <strong>Duration:</strong> 5 months | <strong>Deployments:</strong> 100+ automated releases</p>
-								<p><strong>Project Overview:</strong><br>
-								Set up CI/CD infrastructure tailored to deploying R Shiny applications. The pipelines cover code quality checks, automated tests, Docker builds, security scans and deployment across multiple environments, with rollback when something goes wrong.
-								</p>
-								<p><strong>Key Achievements:</strong><br>
-								• Reached a 99.5% deployment success rate with zero-downtime releases<br>
-								• Cut deployment time from hours to minutes (90% faster)<br>
-								• Added quality gates that caught 100+ potential issues before release<br>
-								• Automated rollback that recovers in 30 seconds
-								</p>
-								<p><strong>Technical Stack:</strong> GitLab CI/CD pipelines, Docker, R Shiny, DevOps practices, automated testing, infrastructure as code</p>
-							</div>
-						</div>
-					</section>
-
-					<!-- Additional Enterprise Applications -->
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-heartbeat" style="font-size: 3rem; color: #E91E63; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">Healthcare Analytics Dashboard</h2>
-								</div>
-								<p><strong>Role:</strong> Full Stack Developer | <strong>Duration:</strong> 7 months | <strong>Data Volume:</strong> Real-time processing</p>
-								<p><strong>Project Overview:</strong><br>
-								Built a real-time healthcare analytics platform that streams live data from AWS to track key performance indicators and operational metrics. It gives healthcare administrators a clear view of patient flow, resource use and clinical outcomes to support better decisions.
-								</p>
-								<p><strong>Key Features:</strong><br>
-								• Real-time tracking of 50+ healthcare KPIs with sub-second latency<br>
-								• Patient admission forecasting with 85% accuracy<br>
-								• Interactive charts with drill-down by department<br>
-								• Automated alerts when critical thresholds are crossed
-								</p>
-								<p><strong>Technical Architecture:</strong> R Shiny (frontend), AWS (data streaming), real-time analytics, healthcare KPI modeling, interactive visualization</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-sitemap" style="font-size: 3rem; color: #795548; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">Study Metadata API Integration</h2>
-								</div>
-								<p><strong>Role:</strong> Integration Lead | <strong>Duration:</strong> 4 months | <strong>Platforms Connected:</strong> 8 clinical systems</p>
-								<p><strong>Project Overview:</strong><br>
-								Designed and built an integration layer that links separate clinical data platforms through RESTful APIs, keeping study and variable mappings in sync in real time. It offers one point of access to metadata, synchronizes it automatically and standardizes how data is shared across research workflows.
-								</p>
-								<p><strong>Key Achievements:</strong><br>
-								• One point of access to metadata across 8 clinical data platforms<br>
-								• Automatic real-time sync that cut manual mapping by 90%<br>
-								• Error handling and retries with 99.8% reliability<br>
-								• Caching layer that cut API response times by 75%
-								</p>
-								<p><strong>Technical Stack:</strong> REST APIs, R, data integration patterns, metadata management, real-time synchronization</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-robot" style="font-size: 3rem; color: #673AB7; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">Automated Machine Learning Web App</h2>
-								</div>
-								<p><strong>Role:</strong> Full Stack Developer & ML Engineer | <strong>Duration:</strong> 8 months | <strong>Deployment:</strong> Enterprise On-Premise</p>
-								<p><strong>Project Overview:</strong><br>
-								Built an end-to-end automated machine learning platform that makes data science tools available across the organization. It offers simple interfaces for running AutoML pipelines, validating models and producing reports, with strong security for sensitive data.
-								</p>
-								<p><strong>Key Features:</strong><br>
-								• Automated feature engineering and model selection across 15+ algorithms<br>
-								• Hyperparameter tuning with Bayesian optimization<br>
-								• Model validation using cross-validation and holdout testing<br>
-								• One-click deployment of models to production
-								</p>
-								<p><strong>Technical Architecture:</strong> R Shiny (frontend), AutoML frameworks, MongoDB (storage), Bootstrap (UI), CI/CD pipelines, security controls</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-search" style="font-size: 3rem; color: #4CAF50; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">ScrapText – Web Scraping & Text Mining Tool</h2>
-								</div>
-								<p><strong>Role:</strong> NLP Engineer & Package Developer | <strong>Duration:</strong> 5 months | <strong>Domains Analyzed:</strong> 1000+ websites</p>
-								<p><strong>Project Overview:</strong><br>
-								Created an R package suite that combines web scraping with text mining and sentiment analysis. It helps researchers and analysts collect and analyze large amounts of web text for market research, competitive intelligence and social media monitoring.
-								</p>
-								<p><strong>Key Features:</strong><br>
-								• Web scraping with adaptive rate limiting and anti-detection measures<br>
-								• Sentiment analysis with 92% accuracy on social media data<br>
-								• Topic modeling and keyword extraction to spot trends<br>
-								• Interactive charts for exploring and presenting text insights
-								</p>
-								<p><strong>Technical Stack:</strong> R, web scraping (rvest), NLP libraries (tm, tidytext), text mining, sentiment analysis, data visualization</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-camera" style="font-size: 3rem; color: #FF9800; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">Image Prediction REST API</h2>
-								</div>
-								<p><strong>Role:</strong> Backend Developer & API Architect | <strong>Duration:</strong> 3 months | <strong>Throughput:</strong> 1000+ requests/minute</p>
-								<p><strong>Project Overview:</strong><br>
-								Designed and built a fast RESTful API that serves machine learning image classification models in production. It processes images securely and at scale, with solid error handling, detailed logging and quick responses for real-time use.
-								</p>
-								<p><strong>Key Features:</strong><br>
-								• Image classification responses in under 200 ms<br>
-								• Secure authentication and authorization with JWT tokens<br>
-								• Horizontal scaling to process 1000+ images concurrently<br>
-								• Error handling with detailed logging and monitoring
-								</p>
-								<p><strong>Technical Architecture:</strong> R Plumber (API), REST API design, image processing, MongoDB (storage), scalable cloud setup</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-file-alt" style="font-size: 3rem; color: #2196F3; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">Web-Based Reporting Engine with RMarkdown</h2>
-								</div>
-								<p><strong>Role:</strong> Automation Engineer & Report Architect | <strong>Duration:</strong> 6 months | <strong>Reports Generated:</strong> 2000+ automated</p>
-								<p><strong>Project Overview:</strong><br>
-								Built a web-based reporting engine that produces clinical and operational reports from parameterized R Markdown templates. It plugs into CI/CD workflows so reports are consistent, reproducible and delivered on time across departments and regulatory needs.
-								</p>
-								<p><strong>Key Achievements:</strong><br>
-								• Automated 50+ report types with parameterized templates<br>
-								• Cut manual reporting effort by 95%, from days to minutes<br>
-								• Scheduled reports delivered by email<br>
-								• Version control and audit trails for regulatory compliance
-								</p>
-								<p><strong>Technical Architecture:</strong> R Markdown (templates), parameterized reporting, CI/CD automation, web integration, document generation</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-sync-alt" style="font-size: 3rem; color: #607D8B; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">R-Python Hybrid Pipelines for Data Processing</h2>
-								</div>
-								<p><strong>Role:</strong> Integration Developer | <strong>Duration:</strong> 4 months | <strong>Pipelines Built:</strong> 15+ hybrid workflows</p>
-								<p><strong>Project Overview:</strong><br>
-								Built bridges between R and Python so the two can work together in complex analytics workflows. The pipelines pair R's statistical strengths with Python's machine learning tools in a single, efficient data processing system.
-								</p>
-								<p><strong>Key Features:</strong><br>
-								• Two-way data exchange with automatic type conversion and validation<br>
-								• Memory management tuned for large datasets<br>
-								• Error handling and logging across both languages<br>
-								• Performance monitoring and tuning for hybrid workflows
-								</p>
-								<p><strong>Technical Stack:</strong> R, Python integration, data pipeline design, statistical computing, cross-platform development</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-graduation-cap" style="font-size: 3rem; color: #9C27B0; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">Learning Management System</h2>
-								</div>
-								<p><strong>Role:</strong> Full Stack Developer | <strong>Duration:</strong> 10 months | <strong>Users:</strong> 500+ learners</p>
-								<p><strong>Project Overview:</strong><br>
-								Built a secure learning management system for corporate training and certification programs. It handles course management, automated assessments and detailed progress tracking, and protects training content and learner data.
-								</p>
-								<p><strong>Key Features:</strong><br>
-								• Supports video, interactive modules and assessments<br>
-								• Automated certification with digital badges<br>
-								• Analytics dashboard for learner progress and engagement<br>
-								• Role-based access control with enterprise SSO
-								</p>
-								<p><strong>Technical Architecture:</strong> Python (backend), Django, PostgreSQL (database), security controls, training platform design</p>
-							</div>
-						</div>
-					</section>
-
-					<section>
-						<div class="content">
-							<div class="inner">
-								<div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
-									<span class="icon solid major fa-comments" style="font-size: 3rem; color: #00BCD4; margin-right: 1rem;"></span>
-									<h2 style="margin: 0;">NLP Chatbot for Client Q&A</h2>
-								</div>
-								<p><strong>Role:</strong> NLP Developer & Conversational AI Engineer | <strong>Duration:</strong> 6 months | <strong>Accuracy:</strong> 89% intent recognition</p>
-								<p><strong>Project Overview:</strong><br>
-								Built a neural-network chatbot that answers customer support and business FAQ questions automatically. It understands natural language, keeps track of context and hands complex questions over to human agents.
-								</p>
-								<p><strong>Key Features:</strong><br>
-								• Neural network intent classification with 89% accuracy<br>
-								• Keeps conversation history to give context-aware replies<br>
-								• Supports 5 languages for a global customer base<br>
-								• Routes complex questions to the right specialists
-								</p>
-								<p><strong>Technical Architecture:</strong> Python (core), neural networks, natural language processing, Linux deployment, customer support automation</p>
-							</div>
-						</div>
-					</section>
-		
-				</section>
-
-
-				<!-- Three -->
-					<section id="contact" class="wrapper style1 fade-up">
-						<div class="inner">
-							<h2>Contact</h2>
-							<p>I'm open to new projects and collaborations. Let's build something
-								useful together.</p>
-							<div class="split style1">
-						
-								<section>
-									<ul class="contact">
-										<li>
-											<h3>Place</h3>
-											<span>Belagavi, Karnataka<br />
-												India<br />
-											</span>
-										</li>
-										<li>
-											<h3>Email</h3>
-											<a href="mailto:prm@outlook.in">PRM AT outlook.in</a>
-										</li>
-										<li>
-											<h3>Phone</h3>
-											<span>+91 - 99722 - 92269</span>
-										</li>
-										<li>
-											<h3>Social</h3>
-											<ul class="icons">
-												<li><a href="https://twitter.com/PawanRamaMali" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="https://www.facebook.com/PawanRM" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-												<li><a href="https://github.com/PawanRamaMali" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-												<li><a href="https://instagram.com/Pawan_Rama_Mali" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-												<!--<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-												-->
-												</ul>
-										</li>
-									</ul>
-								</section>
-							</div>
-						</div>
-                        <div class="go-top">
-                            <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-angle-up"
-                                    aria-hidden="true"></i></a>
-                        </div>
-					</section>
-
-			</div>
-
-		<!-- Footer -->
-    <footer id="footer" class="wrapper style1-alt" role="contentinfo">
-        <div class="inner">
-            <ul class="menu">
-                <li>&copy; 2024 All rights reserved.</li>
-                <li><a href="https://pawanramamali.github.io/" aria-label="Visit Pawan Rama Mali's homepage">Pawan Rama Mali</a></li>
-            </ul>
-        </div>
-    </footer>
-
-    <!-- Preloader -->
-    <div id="preloader">
-        <div id="loader"></div>
+<!-- NAV -->
+<nav class="nav" aria-label="Primary">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Pawan Rama Mali, home">
+      <span class="mark" aria-hidden="true"><span>prm</span></span>
+      <span>Pawan Rama Mali</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Work</a>
+      <a href="#opensource">Open Source</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
     </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+  </div>
+</nav>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+<!-- HERO -->
+<header class="hero" id="top">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-main">
+        <div class="hero-eyebrow"><span class="rule" aria-hidden="true"></span>Clinical Data &amp; ML Engineering</div>
+        <h1>Pawan<br>Rama <span class="light">Mali</span></h1>
+        <p class="hero-tag">I build clinical data platforms and machine learning systems for life sciences, and still write the core code.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">View Work <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+          <a class="btn ghost" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+      <aside class="hero-aside" aria-label="At a glance">
+        <div class="ak">At a glance</div>
+        <div class="row"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span><b>Belagavi, Karnataka</b>India</span></div>
+        <div class="row"><i class="fa-solid fa-code-branch" aria-hidden="true"></i><span><b>10+ years building</b>8 in technical lead roles</span></div>
+        <div class="row"><i class="fa-solid fa-briefcase" aria-hidden="true"></i><span><b>Technical Lead</b>TechWorksLab</span></div>
+        <div class="row"><i class="fa-solid fa-box" aria-hidden="true"></i><span><b>Open-source author</b>10 R packages, 9 on CRAN</span></div>
+      </aside>
+    </div>
+    <div class="scroll-cue"><span class="bar" aria-hidden="true"></span>Scroll</div>
+  </div>
+</header>
 
+<!-- TECH MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <span class="m-item">R</span><span class="m-item">Python</span><span class="m-item">R Shiny</span><span class="m-item">FastAPI</span><span class="m-item">PostgreSQL</span><span class="m-item">CDISC SDTM</span><span class="m-item">ADaM</span><span class="m-item">SAS</span><span class="m-item">Docker</span><span class="m-item">AWS</span><span class="m-item">PyTorch</span><span class="m-item">llama.cpp</span><span class="m-item">GitHub Actions</span><span class="m-item">Posit Connect</span><span class="m-item">D3.js</span>
+    <span class="m-item">R</span><span class="m-item">Python</span><span class="m-item">R Shiny</span><span class="m-item">FastAPI</span><span class="m-item">PostgreSQL</span><span class="m-item">CDISC SDTM</span><span class="m-item">ADaM</span><span class="m-item">SAS</span><span class="m-item">Docker</span><span class="m-item">AWS</span><span class="m-item">PyTorch</span><span class="m-item">llama.cpp</span><span class="m-item">GitHub Actions</span><span class="m-item">Posit Connect</span><span class="m-item">D3.js</span>
+  </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.3/dist/aos.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.96.0/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.96.0/examples/js/renderers/CanvasRenderer.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.96.0/examples/js/renderers/Projector.js"></script>
-    <script src="js/main.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js'></script>
-    <script src="./js/script.js"></script>
-    <script src="./js/projects-redesign.js"></script>
-    
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">01 / About</div>
+      <h2 class="section-title">I build clinical software that ships and holds up under audit.</h2>
+    </div>
+    <div class="two-col">
+      <div class="col reveal">
+        <span class="col-k">In short</span>
+        <p class="lead">Ten years building <span class="accent">clinical data platforms and machine learning systems</span> for pharmaceutical and biotech teams. I still write the code that goes to production, not only the plan for it.</p>
+        <div class="t-tags" style="margin-top:24px"><span class="mini-tag">Clinical data</span><span class="mini-tag">LLM &amp; agents</span><span class="mini-tag">R / Python</span><span class="mini-tag">CDISC</span><span class="mini-tag">MLOps</span></div>
+      </div>
+      <div class="col reveal">
+        <span class="col-k">In practice</span>
+        <div class="about-body">
+          <p>Most of it is retrieval systems and agents over patient-level clinical data. Every answer cites the record it came from, sits behind guardrails, and reaches a human reviewer before anyone acts on it. The stack is Python, R, SQL and PostgreSQL on AWS, shipped with Docker and CI/CD.</p>
+          <p>Underneath sits the clinical detail: CDISC SDTM and ADaM, legacy SAS rebuilt as validated R, risk-based quality monitoring and biomarker analytics, all under GxP. I also build in the open. I founded R4SUB, a seven-package ecosystem for submission readiness, and have authored ten R packages, nine of them on CRAN.</p>
+        </div>
+      </div>
+    </div>
+    <div class="stats reveal" id="stats">
+      <div class="stat"><div class="num"><span data-count="10">0</span><span class="suf">+</span></div><div class="lbl">Years building production software</div></div>
+      <div class="stat"><div class="num"><span data-count="10">0</span></div><div class="lbl">Open-source R packages authored</div></div>
+      <div class="stat"><div class="num"><span data-count="9">0</span></div><div class="lbl">Published on CRAN</div></div>
+      <div class="stat"><div class="num"><span data-count="7">0</span></div><div class="lbl">Packages in the R4SUB ecosystem</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">02 / Experience</div>
+      <h2 class="section-title">Where I have built.</h2>
+      <p class="section-kicker">Ten years across clinical data products, engineering analytics and applied machine learning, most of it client facing and in audited environments.</p>
+    </div>
+    <div class="exp-grid">
+      <ol class="timeline" aria-label="Work experience timeline">
+        <li>
+          <span class="t-date"><i class="fa-solid fa-circle" style="font-size:5px"></i>2024 &rarr; Present</span>
+          <p class="t-title">Technical Lead, Clinical Data &amp; Applied ML</p>
+          <p class="t-sub">TechWorksLab, embedded engineering for global pharma and biotech clients</p>
+          <div class="t-tags"><span class="mini-tag">Python</span><span class="mini-tag">R</span><span class="mini-tag">FastAPI</span><span class="mini-tag">PostgreSQL</span><span class="mini-tag">CDISC</span></div>
+        </li>
+        <li>
+          <span class="t-date"><i class="fa-solid fa-circle" style="font-size:5px"></i>2022 &rarr; 2023</span>
+          <p class="t-title">Engineer, Scientific &amp; Clinical Data Products</p>
+          <p class="t-sub">Appsilon, R and Shiny data products for pharmaceutical and research teams</p>
+          <div class="t-tags"><span class="mini-tag">R Shiny</span><span class="mini-tag">R packages</span><span class="mini-tag">CI/CD</span></div>
+        </li>
+        <li>
+          <span class="t-date"><i class="fa-solid fa-circle" style="font-size:5px"></i>2016 &rarr; 2022</span>
+          <p class="t-title">Technical Lead, Engineering Analytics</p>
+          <p class="t-sub">AERODESIGN Solutions, full-stack analytical platforms and team leadership</p>
+          <div class="t-tags"><span class="mini-tag">R</span><span class="mini-tag">Python</span><span class="mini-tag">Data pipelines</span></div>
+        </li>
+        <li>
+          <span class="t-date"><i class="fa-solid fa-circle" style="font-size:5px"></i>2013 &rarr; 2014</span>
+          <p class="t-title">Data Analyst</p>
+          <p class="t-sub">First Advantage, large-scale data validation, QC and statistical reporting</p>
+          <div class="t-tags"><span class="mini-tag">Statistics</span><span class="mini-tag">Reporting</span></div>
+        </li>
+      </ol>
+      <div class="now-card reveal">
+        <div class="nk"><span class="pulse" aria-hidden="true"></span>Currently</div>
+        <h3>Technical Lead at TechWorksLab</h3>
+        <p>Leading in-house clinical application, analytics and ML delivery for sponsor clinical development, while staying hands-on in the code.</p>
+        <ul>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i>Retrieval and agent systems over patient-level data, on self-hosted models</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i>Risk-based quality monitoring and biomarker analytics platforms</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i>Legacy SAS converted to validated R under parallel-run evidence</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i>Mentoring engineers and statistical programmers toward ownership</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">03 / Skills</div>
+      <h2 class="section-title">Capabilities, grouped.</h2>
+    </div>
+    <div class="skills-grid stagger">
+      <div class="skill-card"><span class="ic" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></span><h3>LLM &amp; Agent Systems</h3><p>Retrieval, agents and tool use, evaluation sets, guardrails and human review gates; model APIs and custom MCP servers.</p></div>
+      <div class="skill-card"><span class="ic" aria-hidden="true"><i class="fa-solid fa-microchip"></i></span><h3>Self-Hosted &amp; Applied ML</h3><p>Open-weight inference (GGUF, llama.cpp, MedGemma); PyTorch, scikit-learn, transformers; vision ensembles (CoAtNet, ConvNeXt, DINOv2).</p></div>
+      <div class="skill-card"><span class="ic" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span><h3>R &amp; Shiny Engineering</h3><p>Expert R, production Shiny (modules, performance), CRAN package authorship, testthat, renv and reproducible environments.</p></div>
+      <div class="skill-card"><span class="ic" aria-hidden="true"><i class="fa-solid fa-notes-medical"></i></span><h3>Clinical Data Standards</h3><p>CDISC SDTM and ADaM, Define-XML, controlled terminology, admiral and pharmaverse, RBQM and KRI frameworks.</p></div>
+      <div class="skill-card"><span class="ic" aria-hidden="true"><i class="fa-solid fa-file-code"></i></span><h3>Statistical Programming &amp; SAS</h3><p>SAS and SAS to R migration under validation, TFL shells and specifications, QC and double programming.</p></div>
+      <div class="skill-card"><span class="ic" aria-hidden="true"><i class="fa-solid fa-server"></i></span><h3>Backend &amp; Data Engineering</h3><p>Python (FastAPI, plumber), REST API design, PostgreSQL, MongoDB, ETL and ELT, metadata-driven pipelines.</p></div>
+      <div class="skill-card"><span class="ic" aria-hidden="true"><i class="fa-solid fa-cloud"></i></span><h3>Cloud, DevOps &amp; Validation</h3><p>AWS, Azure, Docker, Linux, CI/CD (GitHub Actions, GitLab), Posit Connect; GxP and 21 CFR Part 11.</p></div>
+      <div class="skill-card"><span class="ic" aria-hidden="true"><i class="fa-solid fa-dna"></i></span><h3>Biostatistics &amp; Multi-Omics</h3><p>SAPs, survival, mixed-effects and Bayesian models; genomics, transcriptomics, proteomics; DESeq2, limma, edgeR, GSEA.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">04 / Selected Work</div>
+      <h2 class="section-title">Systems shipped.</h2>
+      <p class="section-kicker">Clinical data platforms, machine learning and engineering tooling. Client work is shown anonymized. A cross-section, not an exhaustive list.</p>
+    </div>
+    <div class="proj-grid stagger">
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">01</span><h3>Clinical Review Agent</h3></div>
+        <div class="proj-role">Lead &middot; Global pharma sponsor</div>
+        <p>Retrieval-grounded summarization over patient-level records on self-hosted MedGemma, so data never leaves the network. Every statement carries a sentence-level citation, behind guardrails and a human review gate.</p>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">MedGemma</span><span class="tag">RAG</span><span class="tag">R</span><span class="tag">Shiny</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">02</span><h3>Risk-Based Quality Monitoring</h3></div>
+        <div class="proj-role">Lead Engineer &middot; Global pharma sponsor</div>
+        <p>Scores and ranks trial sites and participants by risk, so oversight effort goes where the signal is. Indicator drill-down from study to site to subject, statistical thresholds, evidence tables and recalculation driving investigation.</p>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL</span><span class="tag">Statistical modeling</span><span class="tag">RBQM</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">03</span><h3>Conformance Review Assistant</h3></div>
+        <div class="proj-role">Proof of Concept</div>
+        <p>Checks clinical datasets against CDISC SDTM, Define-XML and FDA conformance rules. Rules run deterministically and the model only explains each finding, giving a reason and a remediation path, which keeps it auditable.</p>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">CDISC SDTM</span><span class="tag">Define-XML</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">04</span><h3>Biomarker Analytics Platform</h3></div>
+        <div class="proj-role">Senior Developer &middot; Global pharma sponsor</div>
+        <p>Interactive biomarker visualization for exploratory analysis: spaghetti, box, volcano and heatmap plots with dynamic filtering and subgroup analysis. Re-engineered rendering and caching to hold interactivity on large datasets.</p>
+        <div class="proj-tags"><span class="tag">R</span><span class="tag">Shiny</span><span class="tag">JavaScript</span><span class="tag">D3.js</span><span class="tag">SQL</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">05</span><h3>Trial Visualization &amp; Patient Analytics</h3></div>
+        <div class="proj-role">Senior Developer &middot; Global pharma sponsor</div>
+        <p>Demographics, disposition and treatment dashboards with patient timelines spanning adverse events, labs, medications, history and vital signs. Authored ADaM specifications and derivations with study-day logic and subgroup analysis.</p>
+        <div class="proj-tags"><span class="tag">R</span><span class="tag">Shiny</span><span class="tag">ADaM</span><span class="tag">SDTM</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">06</span><h3>Traceability Engine</h3></div>
+        <div class="proj-role">Solution Architect</div>
+        <p>Metadata-driven lineage platform linking Statistical Analysis Plans, analysis datasets and TLF outputs back to source metadata, with automated lineage tracking and traceability validation.</p>
+        <div class="proj-tags"><span class="tag">R</span><span class="tag">Python</span><span class="tag">CDISC ADaM</span><span class="tag">SDTM</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">07</span><h3>Applied ML Research: Vision &amp; Reasoning</h3></div>
+        <div class="proj-role">Independent</div>
+        <p>Medical image abnormality detection on the RSNA knee dataset with CoAtNet, ConvNeXt and DINOv2 ensembles. Antimicrobial peptide activity, MIC regression and hemolysis prediction; reasoning agents and evaluation for ARC-AGI.</p>
+        <div class="proj-tags"><span class="tag">PyTorch</span><span class="tag">Computer Vision</span><span class="tag">Transformers</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">08</span><h3>Clinical Trials Reporting System</h3></div>
+        <div class="proj-role">Lead Developer</div>
+        <p>End-to-end CDISC SDTM, ADaM and TLG reporting with automated Clinical Study Report generation. Cut report time from six weeks to two days.</p>
+        <div class="proj-tags"><span class="tag">R</span><span class="tag">R Markdown</span><span class="tag">SAS</span><span class="tag">GitLab CI/CD</span><span class="tag">Docker</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">09</span><h3>CliniTransformR: SDTM/ADaM Suite</h3></div>
+        <div class="proj-role">Lead Developer &amp; CDISC Specialist</div>
+        <p>R package suite converting raw clinical data into compliant SDTM and ADaM formats, with 200+ validation rules and automated compliance checks.</p>
+        <div class="proj-tags"><span class="tag">R</span><span class="tag">CDISC</span><span class="tag">Validation</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">10</span><h3>ModelBox: Self-Hosted Inference Server</h3></div>
+        <div class="proj-role">Software Architect</div>
+        <p>Self-hosted ML inference server with GPU acceleration, load balancing and API management. Sub-100ms inference at 10k+ concurrent requests.</p>
+        <div class="proj-tags"><span class="tag">FastAPI</span><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">GPU</span><span class="tag">Redis</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">11</span><h3>Image Prediction REST API</h3></div>
+        <div class="proj-role">Backend Developer &amp; API Architect</div>
+        <p>Production RESTful API serving image-classification models. Responses under 200ms, JWT authentication, and horizontal scaling to 1000+ images concurrently.</p>
+        <div class="proj-tags"><span class="tag">R Plumber</span><span class="tag">REST</span><span class="tag">MongoDB</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">12</span><h3>Reusable Shiny UI Component Library</h3></div>
+        <div class="proj-role">Component Architect</div>
+        <p>50+ reusable Shiny UI components (modals, notifications, data grids, loading states) with a theming system. Adopted by 25+ applications.</p>
+        <div class="proj-tags"><span class="tag">R Shiny</span><span class="tag">CSS3</span><span class="tag">JavaScript</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">13</span><h3>CI/CD Automation for Shiny</h3></div>
+        <div class="proj-role">DevOps Engineer</div>
+        <p>CI/CD for R Shiny: quality checks, automated tests, Docker builds, security scans and multi-environment deploys with rollback. 99.5% success across 100+ releases.</p>
+        <div class="proj-tags"><span class="tag">GitLab CI/CD</span><span class="tag">Docker</span><span class="tag">DevOps</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">14</span><h3>RMarkdown Reporting Engine</h3></div>
+        <div class="proj-role">Automation Engineer</div>
+        <p>Parameterized RMarkdown reporting wired into CI/CD for consistent, reproducible clinical and operational reports. 2000+ generated across 50+ report types.</p>
+        <div class="proj-tags"><span class="tag">R Markdown</span><span class="tag">CI/CD</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">15</span><h3>ScrapText: Web Scraping &amp; Text Mining</h3></div>
+        <div class="proj-role">NLP Engineer</div>
+        <p>R package combining web scraping with text mining and sentiment analysis. Adaptive rate limiting, topic modeling, and 92% sentiment accuracy across 1000+ sites.</p>
+        <div class="proj-tags"><span class="tag">R</span><span class="tag">rvest</span><span class="tag">tm</span><span class="tag">tidytext</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">16</span><h3>Conversational Support Bot</h3></div>
+        <div class="proj-role">NLP Developer</div>
+        <p>Neural-network chatbot for customer support and FAQ automation. Context-aware replies, five languages, and routing of complex questions to specialists. 89% intent accuracy.</p>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Neural networks</span><span class="tag">NLP</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">17</span><h3>Learning Management System</h3></div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p>Secure corporate LMS for training and certification: courses, automated assessments, digital badges and enterprise SSO. 500+ learners.</p>
+        <div class="proj-tags"><span class="tag">Python</span><span class="tag">Django</span><span class="tag">PostgreSQL</span></div>
+      </article>
+
+      <article class="proj-card">
+        <div class="proj-top"><span class="proj-num">18</span><h3>R / Python Hybrid Pipelines</h3></div>
+        <div class="proj-role">Integration Developer</div>
+        <p>Bridges between R and Python pairing R statistics with Python machine learning. Two-way data exchange with type conversion, validation and tuned memory management.</p>
+        <div class="proj-tags"><span class="tag">R</span><span class="tag">Python</span><span class="tag">Data pipelines</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- OPEN SOURCE -->
+<section class="section" id="opensource">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">05 / Open Source &amp; Products</div>
+      <h2 class="section-title">Built in the open.</h2>
+      <p class="section-kicker">Packages and ecosystems I author and maintain. Nine are published on CRAN.</p>
+    </div>
+    <div class="os-grid stagger">
+
+      <article class="os-card">
+        <div class="os-head"><h3>R4SUB</h3><span class="os-badge">Open Source</span></div>
+        <div class="os-role">Founder &amp; Lead Author</div>
+        <p>An open-source R ecosystem scoring clinical data readiness for regulatory submission. An ADaM-to-SDTM traceability engine, FMEA-based risk quantification and a Submission Confidence Index turn binary pass or fail checks into scores a reviewer can trace. Sole author and maintainer.</p>
+        <div class="os-metrics"><div class="os-metric"><b>7</b><span>Packages on CRAN</span></div><div class="os-metric"><b>6</b><span>Authorities</span></div></div>
+        <a class="repo-link" href="https://r4sub.github.io" target="_blank" rel="noopener">r4sub.github.io <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="os-card">
+        <div class="os-head"><h3>edgemodelr</h3><span class="os-badge">CRAN v0.7.0</span></div>
+        <div class="os-role">Author &amp; Maintainer</div>
+        <p>Local large language model inference inside R through GGUF model files and the llama.cpp engine, with completion and streaming and no cloud call. Built for environments where data cannot leave the network.</p>
+        <div class="os-metrics"><div class="os-metric"><b>16+</b><span>GitHub stars</span></div><div class="os-metric"><b>CRAN</b><span>Published</span></div></div>
+        <a class="repo-link" href="https://cran.r-project.org/package=edgemodelr" target="_blank" rel="noopener">cran.r-project.org/package=edgemodelr <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="os-card">
+        <div class="os-head"><h3>shinypayload</h3><span class="os-badge">CRAN v0.1.0</span></div>
+        <div class="os-role">Author &amp; Maintainer</div>
+        <p>HTTP POST and query-parameter ingestion into Shiny applications as reactive values. Cross-platform and MIT licensed.</p>
+        <div class="os-metrics"><div class="os-metric"><b>132</b><span>Tests</span></div><div class="os-metric"><b>MIT</b><span>License</span></div></div>
+        <a class="repo-link" href="https://cran.r-project.org/package=shinypayload" target="_blank" rel="noopener">cran.r-project.org/package=shinypayload <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="os-card">
+        <div class="os-head"><h3>databoxR</h3><span class="os-badge">R Package</span></div>
+        <div class="os-role">Author</div>
+        <p>An interactive clinical dataset explorer for SDTM and ADaM data. Browse, filter and inspect analysis-ready datasets without leaving R.</p>
+        <div class="os-metrics"><div class="os-metric"><b>SDTM</b><span>&amp; ADaM</span></div><div class="os-metric"><b>Shiny</b><span>Interface</span></div></div>
+        <a class="repo-link" href="https://github.com/PawanRamaMali" target="_blank" rel="noopener">github.com/PawanRamaMali <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION + CERTS -->
+<section class="section" id="education">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">06 / Education &amp; Certifications</div>
+      <h2 class="section-title">Academic path &amp; credentials.</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="reveal">
+        <div class="block-label"><span class="dot" aria-hidden="true"></span>Education</div>
+        <ol class="timeline" aria-label="Education timeline">
+          <li><span class="t-date"><i class="fa-solid fa-circle" style="font-size:5px"></i>2025 &rarr; Present</span><p class="t-title">Research Scholar</p><p class="t-sub">Indian Institute of Technology (IIT) Ropar</p></li>
+          <li><span class="t-date"><i class="fa-solid fa-circle" style="font-size:5px"></i>2022</span><p class="t-title">M.Tech, Artificial Intelligence</p><p class="t-sub">REVA University</p></li>
+          <li><span class="t-date"><i class="fa-solid fa-circle" style="font-size:5px"></i>2016</span><p class="t-title">B.Tech, Aerospace Engineering</p><p class="t-sub">Hindustan Aviation Academy</p></li>
+        </ol>
+      </div>
+      <div class="reveal">
+        <div class="block-label"><span class="dot" aria-hidden="true"></span>Certifications</div>
+        <ul class="cert-list">
+          <li><i class="fa-solid fa-certificate" aria-hidden="true"></i><span><b>DeepLearning.AI</b>, Probability &amp; Statistics for ML &amp; Data Science <span class="yr">· 2025</span></span></li>
+          <li><i class="fa-solid fa-certificate" aria-hidden="true"></i><span><b>Genentech</b>, Making Data Science Work for Clinical Reporting <span class="yr">· 2025</span></span></li>
+          <li><i class="fa-solid fa-certificate" aria-hidden="true"></i><span><b>Stanford Online</b>, Supervised Machine Learning: Regression &amp; Classification <span class="yr">· 2024</span></span></li>
+          <li><i class="fa-solid fa-certificate" aria-hidden="true"></i><span><b>Skillsoft</b>, Establishing Guardrails &amp; Governance <span class="yr">· 2024</span></span></li>
+          <li><i class="fa-solid fa-certificate" aria-hidden="true"></i><span><b>Docker, Inc</b>, Docker Foundations Professional Certificate <span class="yr">· 2024</span></span></li>
+          <li><i class="fa-solid fa-certificate" aria-hidden="true"></i><span><b>LinkedIn</b>, Data Pipeline Automation with GitHub Actions (R &amp; Python) <span class="yr">· 2024</span></span></li>
+          <li><i class="fa-solid fa-certificate" aria-hidden="true"></i><span><b>Open Source in Pharma</b>, Pharmaverse Champion &amp; Intro to tidymodels <span class="yr">· 2023</span></span></li>
+          <li><i class="fa-solid fa-certificate" aria-hidden="true"></i><span><b>Microsoft Certified</b>, Azure AI Engineer Associate <span class="yr">· 2022</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">07 / Contact</div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-head reveal">
+        <h2>Let's build something <em>clear.</em></h2>
+        <p>Open to clinical data and machine learning engineering, consulting, and collaboration. The fastest way to reach me is email.</p>
+        <div class="socials">
+          <a href="https://github.com/PawanRamaMali" aria-label="GitHub profile" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+          <a href="https://www.linkedin.com/in/Pawan-Rama-Mali/" aria-label="LinkedIn profile" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/PawanRamaMali" aria-label="Twitter / X profile" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/Pawan_Rama_Mali/" aria-label="Instagram profile" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/PawanRM" aria-label="Facebook profile" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+        </div>
+      </div>
+      <div class="contact-lines reveal">
+        <a href="mailto:prm@outlook.in">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <span class="cval">prm@outlook.in</span>
+          <span class="arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </a>
+        <a href="tel:+919972292269">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <span class="cval">+91 99722 92269</span>
+          <span class="arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+        </a>
+        <a href="https://r4sub.github.io" target="_blank" rel="noopener">
+          <i class="fa-solid fa-cubes" aria-hidden="true"></i>
+          <span class="cval">r4sub.github.io, R4SUB ecosystem</span>
+          <span class="arrow"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>
+        </a>
+        <div class="ci">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          <span class="cval">Belagavi, Karnataka, India</span>
+          <span class="arrow"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a class="totop" id="totop" href="#top" aria-label="Back to top">
+  <svg viewBox="0 0 48 48" aria-hidden="true"><circle class="ring-bg" cx="24" cy="24" r="22"/><circle class="ring-fg" id="ring" cx="24" cy="24" r="22"/></svg>
+  <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap footer-inner">
+    <div class="fb">
+      <span class="fmark" aria-hidden="true"><span>prm</span></span>
+      <span>Pawan Rama Mali</span>
+    </div>
+    <small>&copy; 2025 Pawan Rama Mali. All rights reserved.</small>
+    <a class="to-top" href="#top">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // entrance
+    requestAnimationFrame(function(){ document.body.classList.add('loaded'); });
+
+    // mobile nav
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    toggle.addEventListener('click', function(){
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){ links.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+    });
+
+    // scroll progress + floating ring/back-to-top
+    var progress = document.getElementById('progress');
+    var totop = document.getElementById('totop');
+    var ring = document.getElementById('ring');
+    var CIRC = 2 * Math.PI * 22;
+    if(ring){ ring.style.strokeDasharray = CIRC.toFixed(2); ring.style.strokeDashoffset = CIRC.toFixed(2); }
+    function onScroll(){
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      var p = max > 0 ? h.scrollTop / max : 0;
+      progress.style.width = (p * 100) + '%';
+      if(ring) ring.style.strokeDashoffset = (CIRC * (1 - p)).toFixed(2);
+      if(totop) totop.classList.toggle('show', h.scrollTop > 460);
+    }
+    window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+    // reveal + stagger + timeline + stats via IntersectionObserver
+    var revealEls = document.querySelectorAll('.reveal, .stagger, .timeline');
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ en.target.classList.add('is-visible'); io.unobserve(en.target); }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+      revealEls.forEach(function(el){ io.observe(el); });
+    } else {
+      revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+    }
+
+    // count-up
+    var statsWrap = document.getElementById('stats');
+    function runCount(){
+      document.querySelectorAll('#stats [data-count]').forEach(function(el){
+        var target = parseInt(el.getAttribute('data-count'), 10), start = null, dur = 1200;
+        if(reduce){ el.textContent = target; return; }
+        function step(ts){
+          if(!start) start = ts;
+          var p = Math.min((ts - start)/dur, 1);
+          el.textContent = Math.round((1 - Math.pow(1-p,3)) * target);
+          if(p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }
+    if(statsWrap && 'IntersectionObserver' in window){
+      var sio = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ if(en.isIntersecting){ runCount(); sio.unobserve(en.target); } });
+      }, { threshold: 0.4 });
+      sio.observe(statsWrap);
+    } else { runCount(); }
+
+    // active nav
+    var navAnchors = Array.prototype.slice.call(links.querySelectorAll('a'));
+    var map = {};
+    navAnchors.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var sections = document.querySelectorAll('section[id]');
+    if('IntersectionObserver' in window){
+      var nio = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ navAnchors.forEach(function(a){ a.classList.remove('active'); }); if(map[en.target.id]) map[en.target.id].classList.add('active'); }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      sections.forEach(function(s){ nio.observe(s); });
+    }
+
+    // hero canvas: slow drifting faint dots
+    var canvas = document.getElementById('heroCanvas');
+    if(canvas && !reduce){
+      var ctx = canvas.getContext('2d'), dots = [], raf = null, w, h, dpr = Math.min(window.devicePixelRatio||1, 2);
+      function resize(){
+        var rect = canvas.parentElement.getBoundingClientRect();
+        w = rect.width; h = rect.height;
+        canvas.width = w*dpr; canvas.height = h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+        var count = Math.max(18, Math.min(42, Math.round(w/44)));
+        dots = [];
+        for(var i=0;i<count;i++){
+          dots.push({ x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.4+0.6,
+            vx:(Math.random()-0.5)*0.12, vy:(Math.random()-0.5)*0.12, a:Math.random()*0.3+0.08 });
+        }
+      }
+      var LINK = 128;
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        // update positions
+        for(var i=0;i<dots.length;i++){
+          var d = dots[i]; d.x += d.vx; d.y += d.vy;
+          if(d.x< -5) d.x = w+5; if(d.x>w+5) d.x = -5;
+          if(d.y< -5) d.y = h+5; if(d.y>h+5) d.y = -5;
+        }
+        // connecting lines between nearby dots
+        for(var a=0;a<dots.length;a++){
+          for(var b=a+1;b<dots.length;b++){
+            var dx = dots[a].x - dots[b].x, dy = dots[a].y - dots[b].y;
+            var dist = Math.sqrt(dx*dx + dy*dy);
+            if(dist < LINK){
+              ctx.beginPath(); ctx.moveTo(dots[a].x,dots[a].y); ctx.lineTo(dots[b].x,dots[b].y);
+              ctx.strokeStyle = 'rgba(154,59,46,'+(0.10 * (1 - dist/LINK)).toFixed(3)+')';
+              ctx.lineWidth = 1; ctx.stroke();
+            }
+          }
+        }
+        // dots
+        for(var k=0;k<dots.length;k++){
+          var p = dots[k];
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fillStyle = 'rgba(154,59,46,'+p.a+')'; ctx.fill();
+        }
+        raf = requestAnimationFrame(draw);
+      }
+      resize(); draw();
+      window.addEventListener('resize', resize);
+      document.addEventListener('visibilitychange', function(){
+        if(document.hidden){ if(raf) cancelAnimationFrame(raf); raf=null; }
+        else if(!raf){ draw(); }
+      });
+    }
+  })();
+</script>
+
 </body>
-
 </html>
