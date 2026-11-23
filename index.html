@@ -200,6 +200,7 @@
   .os-metric b{font-family:'Fraunces';font-size:22px;font-weight:600;line-height:1;color:var(--ink);}
   .os-metric span{font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--faint);}
   .repo-link{margin-top:auto;padding-top:6px;font-size:13px;font-weight:500;color:var(--accent);display:inline-flex;align-items:center;gap:8px;overflow-wrap:anywhere;word-break:break-word;}
+  .repo-link.muted-link{color:var(--muted);font-weight:400;font-style:italic;}
   .repo-link i{transition:transform .22s var(--ease);}
   .repo-link:hover{text-decoration:underline;}
   .repo-link:hover i{transform:translate(2px,-2px);}
@@ -327,6 +328,7 @@
       <a href="#skills">Skills</a>
       <a href="#projects">Work</a>
       <a href="#opensource">Open Source</a>
+      <a href="#apps">Apps</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </div>
@@ -616,7 +618,7 @@
     <div class="section-head reveal">
       <div class="section-num">05 / Open Source &amp; Products</div>
       <h2 class="section-title">Built in the open.</h2>
-      <p class="section-kicker">Packages and ecosystems I author and maintain. Nine are published on CRAN.</p>
+      <p class="section-kicker">Packages, tools and projects I author and maintain. Nine are published on CRAN.</p>
     </div>
     <div class="os-grid stagger">
 
@@ -632,7 +634,7 @@
         <div class="os-head"><h3>edgemodelr</h3><span class="os-badge">CRAN v0.7.0</span></div>
         <div class="os-role">Author &amp; Maintainer</div>
         <p>Local large language model inference inside R through GGUF model files and the llama.cpp engine, with completion and streaming and no cloud call. Built for environments where data cannot leave the network.</p>
-        <div class="os-metrics"><div class="os-metric"><b>16+</b><span>GitHub stars</span></div><div class="os-metric"><b>CRAN</b><span>Published</span></div></div>
+        <div class="os-metrics"><div class="os-metric"><b>18</b><span>GitHub stars</span></div><div class="os-metric"><b>CRAN</b><span>Published</span></div></div>
         <a class="repo-link" href="https://cran.r-project.org/package=edgemodelr" target="_blank" rel="noopener">cran.r-project.org/package=edgemodelr <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
       </article>
 
@@ -649,7 +651,93 @@
         <div class="os-role">Author</div>
         <p>An interactive clinical dataset explorer for SDTM and ADaM data. Browse, filter and inspect analysis-ready datasets without leaving R.</p>
         <div class="os-metrics"><div class="os-metric"><b>SDTM</b><span>&amp; ADaM</span></div><div class="os-metric"><b>Shiny</b><span>Interface</span></div></div>
-        <a class="repo-link" href="https://github.com/PawanRamaMali" target="_blank" rel="noopener">github.com/PawanRamaMali <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        <a class="repo-link" href="https://github.com/PawanRamaMali/databoxR" target="_blank" rel="noopener">github.com/PawanRamaMali/databoxR <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="os-card">
+        <div class="os-head"><h3>System Design</h3><span class="os-badge"><i class="fa-solid fa-star" aria-hidden="true"></i> 48 stars</span></div>
+        <div class="os-role">Author &amp; Maintainer</div>
+        <p>A practical, reusable guide to system design for web applications: scalability, databases, caching and the trade-offs behind each choice. My most-starred open-source project.</p>
+        <div class="os-metrics"><div class="os-metric"><b>48</b><span>GitHub stars</span></div><div class="os-metric"><b>13</b><span>Forks</span></div></div>
+        <a class="repo-link" href="https://github.com/PawanRamaMali/System-Design" target="_blank" rel="noopener">github.com/PawanRamaMali/System-Design <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="os-card">
+        <div class="os-head"><h3>RSART</h3><span class="os-badge">Web App</span></div>
+        <div class="os-role">Author &amp; Maintainer</div>
+        <p>Resume Shortlisting and Ranking Tool. Parses resumes and ranks candidates against a role using natural language processing, through a simple web interface.</p>
+        <div class="os-metrics"><div class="os-metric"><b>16</b><span>GitHub stars</span></div><div class="os-metric"><b>NLP</b><span>Resume parsing</span></div></div>
+        <a class="repo-link" href="https://github.com/PawanRamaMali/Resume-Shortlisting-and-Ranking-Tool" target="_blank" rel="noopener">github.com/PawanRamaMali/Resume-Shortlisting-and-Ranking-Tool <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="os-card">
+        <div class="os-head"><h3>ModelBox</h3><span class="os-badge">Self-hosted API</span></div>
+        <div class="os-role">Author &amp; Maintainer</div>
+        <p>A lightweight, self-hosted API for downloading and running local models, so inference stays on your own hardware with no outside call.</p>
+        <div class="os-metrics"><div class="os-metric"><b>Local</b><span>Model serving</span></div><div class="os-metric"><b>Python</b><span>Self-hosted</span></div></div>
+        <a class="repo-link" href="https://github.com/PawanRamaMali/ModelBox" target="_blank" rel="noopener">github.com/PawanRamaMali/ModelBox <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="os-card">
+        <div class="os-head"><h3>TestifyLLM</h3><span class="os-badge">R Package</span></div>
+        <div class="os-role">Author &amp; Maintainer</div>
+        <p>A testing ground for large language models in R: run prompts, compare outputs and check behaviour as part of a reproducible workflow.</p>
+        <div class="os-metrics"><div class="os-metric"><b>R</b><span>Model testing</span></div><div class="os-metric"><b>Eval</b><span>Reproducible</span></div></div>
+        <a class="repo-link" href="https://github.com/PawanRamaMali/TestifyLLM" target="_blank" rel="noopener">github.com/PawanRamaMali/TestifyLLM <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="os-card">
+        <div class="os-head"><h3>gmhdatahub</h3><span class="os-badge">R Package</span></div>
+        <div class="os-role">Author &amp; Maintainer</div>
+        <p>The GMH Communities DataHub platform packaged for R: a structured data layer and reporting interface for operational analytics.</p>
+        <div class="os-metrics"><div class="os-metric"><b>R</b><span>Data platform</span></div><div class="os-metric"><b>Package</b><span>Reporting</span></div></div>
+        <a class="repo-link" href="https://github.com/PawanRamaMali/gmhdatahub" target="_blank" rel="noopener">github.com/PawanRamaMali/gmhdatahub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="os-card">
+        <div class="os-head"><h3>Sports Analytics</h3><span class="os-badge">R Shiny App</span></div>
+        <div class="os-role">Author &amp; Maintainer</div>
+        <p>An interactive sports analytics application built with R Shiny for exploring performance data and metrics.</p>
+        <div class="os-metrics"><div class="os-metric"><b>R Shiny</b><span>Interactive</span></div><div class="os-metric"><b>Analytics</b><span>Dashboards</span></div></div>
+        <a class="repo-link" href="https://github.com/PawanRamaMali/Sports-Analytics-App" target="_blank" rel="noopener">github.com/PawanRamaMali/Sports-Analytics-App <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ANDROID APPS -->
+<section class="section" id="apps">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">06 / Android Apps</div>
+      <h2 class="section-title">Shipped on Google Play.</h2>
+      <p class="section-kicker">Android apps I design, build and publish end to end.</p>
+    </div>
+    <div class="os-grid stagger">
+
+      <article class="os-card">
+        <div class="os-head"><h3>Praxia</h3><span class="os-badge"><i class="fa-brands fa-google-play" aria-hidden="true"></i> Google Play</span></div>
+        <div class="os-role">Developer &amp; Publisher</div>
+        <p>Data Analyst &amp; AI Path. A guided learning path for aspiring data analysts, with structured lessons, practice and progress tracking on Android.</p>
+        <div class="os-metrics"><div class="os-metric"><b>Learn</b><span>Data analysis</span></div><div class="os-metric"><b>Android</b><span>Google Play</span></div></div>
+        <a class="repo-link" href="https://play.google.com/store/apps/details?id=com.edushark.praxia" target="_blank" rel="noopener">View on Google Play <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="os-card">
+        <div class="os-head"><h3>Scriba</h3><span class="os-badge"><i class="fa-brands fa-google-play" aria-hidden="true"></i> Google Play</span></div>
+        <div class="os-role">Developer &amp; Publisher</div>
+        <p>Read, Edit &amp; Sign PDF. Open, annotate and edit PDF documents on Android, fill forms and apply signatures, then save and share.</p>
+        <div class="os-metrics"><div class="os-metric"><b>PDF</b><span>Edit &amp; sign</span></div><div class="os-metric"><b>Nov 2026</b><span>Last updated</span></div></div>
+        <a class="repo-link" href="https://play.google.com/store/apps/details?id=com.edushark.scriba" target="_blank" rel="noopener">View on Google Play <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </article>
+
+      <article class="os-card">
+        <div class="os-head"><h3>Oriva</h3><span class="os-badge">Internal testing</span></div>
+        <div class="os-role">Developer &amp; Publisher</div>
+        <p>A new Android app, currently in internal testing on Google Play ahead of release.</p>
+        <div class="os-metrics"><div class="os-metric"><b>Android</b><span>In testing</span></div><div class="os-metric"><b>Soon</b><span>Google Play</span></div></div>
+        <span class="repo-link muted-link">Internal testing on Google Play</span>
       </article>
 
     </div>
@@ -660,7 +748,7 @@
 <section class="section" id="education">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-num">06 / Education &amp; Certifications</div>
+      <div class="section-num">07 / Education &amp; Certifications</div>
       <h2 class="section-title">Academic path &amp; credentials.</h2>
     </div>
     <div class="edu-grid">
@@ -693,7 +781,7 @@
 <section class="section" id="contact">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="section-num">07 / Contact</div>
+      <div class="section-num">08 / Contact</div>
     </div>
     <div class="contact-grid">
       <div class="contact-head reveal">
